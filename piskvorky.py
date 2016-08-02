@@ -14,13 +14,16 @@ def vyhodnot(retazec):
     else:
         return '-'
 
+def tah(retazec, symbol, policko):
+    print retazec[:policko] + '\033[91m' + symbol + '\033[0m' + retazec[policko+1:]
+    return retazec[:policko] + symbol + retazec[policko+1:]
+
 def tah_hraca(retazec):
     # Vrati herne pole s danym symbolom umiestnenym na poziciu danu hracom
     # odmietne zaporne a prilis velke cislo
     # odmietne tah na obsadene policko
     # hrac hraje s 'x'
     symbol = 'x'
-    symbolColor = '\033[91m' + symbol + '\033[0m'
     while True:
         try:
             policko = input('Zadaj číslo políčka (0 až {0}) : '.format(velkost_pola-1))
@@ -39,14 +42,13 @@ def tah_hraca(retazec):
                 print ('Políčko {0} je už obsadené!'.format(policko))
             else:
                 break
-    print retazec[:policko] + symbolColor + retazec[policko+1:]
-    return retazec[:policko] + symbol + retazec[policko+1:]
+    return tah(retazec, symbol, policko)
+    
 
 def tah_pocitaca(retazec):
     # Vrati herne pole so zaznamenanym tahom pocitaca
     # pocitac hraje s 'o'
     symbol = 'o'
-    symbolColor = '\033[91m' + symbol + '\033[0m'
     print 'Počítač :'
     symboly = ( ['-oo',0], ['o-o',1], ['oo-',2], 
                ['-xx',0], ['x-x',1], ['xx-',2],
@@ -62,8 +64,7 @@ def tah_pocitaca(retazec):
             break
     if policko == -1:
         policko = retazec.index('-')
-    print retazec[:policko] + symbolColor + retazec[policko+1:]
-    return retazec[:policko] + symbol + retazec[policko+1:]
+    return tah(retazec, symbol, policko)
 
 def piskvorky1d(N):
     pole = N * '-'
