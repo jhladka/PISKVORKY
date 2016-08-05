@@ -48,7 +48,7 @@ def tah_hraca(retazec):
 
 def piskvorky1d(N):
     pole = N * '-'
-    print pole
+    print(pole),
     vysledok = '-'
     hrac = 0
     tah = (tah_hraca, tah_pocitaca)

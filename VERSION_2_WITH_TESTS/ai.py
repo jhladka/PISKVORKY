@@ -10,7 +10,7 @@ def tah_pocitaca(retazec):
     if '-' not in retazec:
         raise ValueError('Plné herné pole')
     symbol = 'o'
-    print 'Počítač :'
+    print('Hraje počítač :')
     symboly = (['-oo', 0], ['o-o', 1], ['oo-', 2],
                ['-xx', 0], ['x-x', 1], ['xx-', 2],
                ['--o', 1], ['-o-', 0], ['o--', 1],
